@@ -17,7 +17,7 @@ import java.util.UUID;
 public class CandidateEntity {
 
     private UUID id;
-    @NotNull(message = "Usuário Inválido!")
+    @NotNull(message = "Usuário Inválido! Seu usuário não pode ser nulo")
     private String name;
 
     @Pattern(regexp = "^(?!\\s*$).+", message = "O campo username não deve conter espaços!")
@@ -26,7 +26,7 @@ public class CandidateEntity {
     @Email(message = "E-mail Inválido!")
     private String email;
 
-    @Size(min = 3, max = 12, message = "Senha inválida!")
+    @Size(min = 3, max = 12, message = "Senha inválida! Ela deve conter entre 3 a 12 caracteres.")
     private String password;
     private String description;
     private String curriculum;
