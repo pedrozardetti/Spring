@@ -1,5 +1,9 @@
 package br.com.gestao_vagas.modules.candidate;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -9,13 +13,17 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity(name = "candidate")
 public class CandidateEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @NotNull(message = "Usuário Inválido! Seu usuário não pode ser nulo")
     private String name;
@@ -30,4 +38,6 @@ public class CandidateEntity {
     private String password;
     private String description;
     private String curriculum;
+
+    private LocalDateTime createdAt;
 }
