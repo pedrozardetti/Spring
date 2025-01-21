@@ -29,7 +29,7 @@ public class CompanyEntity {
     @Email(message = "E-mail Inválido!")
     private String email;
 
-    @Size(min = 3, max = 12, message = "Senha inválida! Ela deve conter entre 3 a 12 caracteres.")
+    @Size(min = 10, max = 100, message = "Senha inválida! Ela deve conter entre (10) e (100) caracteres.")
     private String password;
 
     private String website;
