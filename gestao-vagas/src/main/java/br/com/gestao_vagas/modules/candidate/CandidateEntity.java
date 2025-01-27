@@ -13,6 +13,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -35,7 +36,7 @@ public class CandidateEntity {
     @Email(message = "E-mail Inválido!")
     private String email;
 
-    @Size(min = 3, max = 12, message = "Senha inválida! Ela deve conter entre 3 a 12 caracteres.")
+    @Length(min = 10, max = 100, message = "Senha inválida! Ela deve conter entre (10) e (100) caracteres.")
     private String password;
     private String description;
     private String curriculum;
