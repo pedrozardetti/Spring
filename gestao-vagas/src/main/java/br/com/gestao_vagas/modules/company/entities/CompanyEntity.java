@@ -10,6 +10,7 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -29,7 +30,7 @@ public class CompanyEntity {
     @Email(message = "E-mail Inválido!")
     private String email;
 
-    @Size(min = 10, max = 100, message = "Senha inválida! Ela deve conter entre (10) e (100) caracteres.")
+    @Length(min = 10, max = 100, message = "Senha inválida! Ela deve conter entre (10) e (100) caracteres.")
     private String password;
 
     private String website;
