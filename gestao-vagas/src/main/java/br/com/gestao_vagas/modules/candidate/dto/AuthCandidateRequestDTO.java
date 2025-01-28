@@ -1,2 +1,3 @@
-package br.com.gestao_vagas.modules.candidate.dto;public class AuthCandidateRequestDTO {
-}
+package br.com.gestao_vagas.modules.candidate.dto;
+
+public record AuthCandidateRequestDTO(String username, String password) {}
