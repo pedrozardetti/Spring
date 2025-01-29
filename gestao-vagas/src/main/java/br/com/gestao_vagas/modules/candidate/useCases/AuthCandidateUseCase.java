@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class AuthCandidateUseCase {
@@ -43,17 +44,17 @@ public class AuthCandidateUseCase {
         }
 
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
+        var expiresIn = Instant.now().plus(Duration.ofMinutes(10));
         var token = JWT.create()
                 .withIssuer("javagas")
                 .withSubject(candidate.getId().toString())
-                .withClaim("roles", Arrays.asList("candidate"))
-                .withExpiresAt(Instant.now().plus(Duration.ofMinutes(10)))
+                .withClaim("roles", List.of("candidate"))
+                .withExpiresAt(expiresIn)
                 .sign(algorithm);
 
-        var authCandidateResponse = AuthCandidateResponseDTO.builder()
+        return AuthCandidateResponseDTO.builder()
                 .access_token(token)
+                .expires_in((expiresIn.toEpochMilli()))
                 .build();
-
-        return authCandidateResponse;
     }
 }
